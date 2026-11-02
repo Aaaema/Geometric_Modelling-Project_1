@@ -19,11 +19,12 @@ python main.py
 | Reset to original | R |
 | Rotate / zoom | mouse drag / scroll wheel |
 
-## Files (3 files only)
+## Files
 | File | What it does |
 |---|---|
 | `mesh_io.py` | Reads OBJ and STL files into vertices `V` and triangles `F` |
-| `subdivision.py` | Loop, Butterfly and Sqrt(3) schemes |
+| `halfedge.py` | Half-edge mesh data structure (origin / next / twin / face per half-edge) used for all neighbour look-ups |
+| `subdivision.py` | Loop, Butterfly and Sqrt(3) schemes (built on the half-edge mesh) |
 | `main.py` | Window: 3D view, menu, keys, wireframe / flat shading |
 
 ## The three schemes in one line each
