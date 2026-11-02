@@ -19,7 +19,11 @@ def load_mesh(path):
     faces = [f for f in faces if len(set(f)) == 3]      # drop broken triangles
     if not verts or not faces:
         raise ValueError("No triangles found in file.")
-    return np.array(verts, dtype=float), np.array(faces, dtype=int)
+
+    # drop vertices that no triangle uses (they have no neighbours to average)
+    V, F = np.array(verts, dtype=float), np.array(faces, dtype=int)
+    used, F = np.unique(F, return_inverse=True)
+    return V[used], F.reshape(-1, 3)
 
 
 def cube():
